@@ -182,7 +182,7 @@ function setupSorting() {
 
 async function main() {
   try {
-    const res = await fetch("/PROVEN-GNN/leaderboard/leaderboard.csv", { cache: "no-store" });
+    const res = await fetch("/Teste_del/leaderboard/leaderboard.csv", { cache: "no-store" });
     const txt = await res.text();
     state.rows = parseCSV(txt);
 
