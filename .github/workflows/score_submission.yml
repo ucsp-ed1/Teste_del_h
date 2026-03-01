@@ -106,7 +106,7 @@ jobs:
       # 9 Clone private labels repo
       - name: Get labels
         env:
-          PRIVATE_KEY: ${{ secrets.TEST_LABELS_CSV }}
+          TEST_LABELS_CSV: ${{ secrets.TEST_LABELS_CSV }}
         run: |
           cat <<EOF > test_labels.csv
           $TEST_LABELS_CSV
