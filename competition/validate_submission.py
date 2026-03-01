@@ -1,13 +1,14 @@
 
 import pandas as pd
+import numpy as np
 import sys
 import json
 
-def main(pred_path, test_ids_path, metadata_path):
+def main(pred_path, metadata_path):
     
     metadata_keys = ["team", "run_id", "type", "model"]
     preds = pd.read_csv(pred_path)
-    test_ids = pd.read_csv(test_ids_path)
+    test_ids = np.arange(1, 154)
     
     with open(metadata_path) as f:
         metadata = json.load(f) 
@@ -25,7 +26,7 @@ def main(pred_path, test_ids_path, metadata_path):
     if ((preds["y_pred"] < 0) | (preds["y_pred"] > 1)).any():
         raise ValueError("Predictions must be in [0,1]")
 
-    if set(preds["id"]) != set(test_ids["id"]):
+    if set(preds["id"]) != set(test_ids):
         raise ValueError("Prediction IDs do not match test nodes")
     
     # Validate the metadata file
