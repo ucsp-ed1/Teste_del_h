@@ -72,7 +72,7 @@ jobs:
       # 6 Install dependencies
       - name: Install dependencies
         run: |
-          pip install pandas pyarrow scikit-learn cryptography
+          pip install -r requirements.txt
 
       # 7 Decrypt submission
       - name: Decrypt submission
